@@ -1,0 +1,86 @@
+package EjercicioHashMap;
+
+import java.util.*;
+
+public class AgendaTel {
+
+	HashMap<String, String> agenda;
+
+	@Override
+	public String toString() {
+		return agenda.toString();
+	}
+
+	public AgendaTel() {
+		agenda = new HashMap<>();
+
+	}
+
+	public void addTelefono(String telefono, String nombre) {
+		boolean crear = true;
+		if (nombre.equals("") || telefono.length() != 9) {
+			crear = false;
+		}
+		for (int i = 0; crear && i < 9; i++) {
+			if (!Character.isDigit(telefono.charAt(i))) {// Character.isDigit si no es un digito crear a falso
+				crear = false;
+			}
+		}
+		if (crear) {
+			agenda.put(telefono, nombre);
+		}
+	}
+
+	public void removeTelefono(String telefono) {
+		agenda.remove(telefono);
+	}
+
+	public String getNombre(String telefono) {
+		return agenda.getOrDefault(telefono, " Telefono no encontrado");
+	}
+
+	public String getTelefono(String nombre) {
+		for (String telefono : agenda.keySet()) {
+			if (agenda.get(telefono).equals(nombre)) {
+				return telefono;
+			}
+		}
+		return "";
+	}
+
+	public List<String> buscarNombre(String cadena) {
+		List<String> listaTelefono = new ArrayList<>();
+		for (String telefono : agenda.keySet()) {
+			if (agenda.get(telefono).toLowerCase().contains(cadena.toLowerCase())) {
+				listaTelefono.add(telefono);
+			}
+		}
+
+		return listaTelefono;
+
+	}
+
+	public List<String> getAll() {
+		List<String> listaTelefono = new ArrayList<>();
+		for (String telefono : agenda.keySet()) {
+			listaTelefono.add(agenda.get(telefono) + "-" + telefono);
+		}
+		listaTelefono.sort(null);
+		return listaTelefono;
+	}
+
+	public boolean hayCapicuas() {
+		for (String telefono : agenda.keySet()) {
+			boolean capicua = true;
+			for (int i = 0; capicua && i < 4; ++i) {
+				if (telefono.charAt(i) != telefono.charAt(8 - i)) {
+					capicua = false;
+				}
+			}
+			if (capicua) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
