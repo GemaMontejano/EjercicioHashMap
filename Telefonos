@@ -1,0 +1,30 @@
+package EjercicioHashMap;
+
+public class Telefonos {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	private String telefono;
+	private String nombre;
+	
+
+	
+	public Telefonos(String telefono, String nombre) {
+		super();
+		this.telefono = telefono;
+		this.nombre = nombre;
+	}
+
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
