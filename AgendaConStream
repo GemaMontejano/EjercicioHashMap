@@ -1,0 +1,81 @@
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Agenda {
+
+	private HashMap<String, String> agendaTel = new HashMap<String, String>();
+
+	public HashMap<String, String> getAgendaTel() {
+		return agendaTel;
+	}
+
+	public void setAgendaTel(HashMap<String, String> agendaTel) {
+		this.agendaTel = agendaTel;
+	}
+
+	public Agenda() {
+		agendaTel = new HashMap<String, String>();
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Agenda [agendaTel=" + agendaTel + "]";
+	}
+	
+	
+	public boolean addTelefono(String telefono, String nombre) {
+		boolean res = true;
+		agendaTel.put(telefono, nombre);
+		return res;
+	}
+
+	public boolean removeTelefono(String telefono) {
+		boolean res = true;
+		agendaTel.remove(telefono);
+		return res;
+	}
+
+	public String getNombre(String telefono) {
+		return agendaTel.get(telefono);
+	}
+
+	public String getTelefono(String nombre) {
+		return agendaTel.entrySet().stream().filter(e -> e.getValue().equals(nombre)).map(Map.Entry::getKey)
+				.collect(Collectors.toList()).toString();
+	}
+	
+
+	public List<String> buscarNombre(String nombre) {
+		return agendaTel.entrySet().stream().filter(e -> e.getValue().equals(nombre)).map(Map.Entry::getKey)
+				.collect(Collectors.toList());
+	}
+	
+	public void addTelefono(String telefono, String nombre) {
+		if (telefono.contains("[a-zA-Z]") == false && telefono.length() == 9) {
+			agendaTel.put(telefono, nombre);
+		} else {
+			agendaTel.put("", nombre);
+		}
+	}
+	
+	/*
+
+- Método getAll()->Devolver un arraylist de cadenas con el formato Nombre-Telefono ordenado alfabeticamente 
+
+- hayCapicuas()-> Nos devolverá true si hay algún teléfono que sea capicua
+	 */
+	
+	
+	public List<String> getAll(){
+		
+			agendaTel.sort(Comparator.comparing(x -> x.HashMap<String, String>));
+			return nombre;
+		}	
+	
+
+}
