@@ -1,0 +1,29 @@
+package EjercicioHashMap;
+
+public class Test {
+
+	public static void main(String[] args) {
+
+	AgendaTel miAgenda = new AgendaTel();
+	miAgenda.addTelefono("67856", "Lluis");
+	miAgenda.addTelefono("45682", "Alejandro");
+	miAgenda.addTelefono("456321232", "Susana");
+	miAgenda.addTelefono("123451234", "Gema");
+	miAgenda.addTelefono("34527", "Diego");
+	System.out.println(miAgenda);
+	miAgenda.removeTelefono("34527");
+    System.out.println(miAgenda);
+    System.out.println(miAgenda.getNombre("67856"));
+    System.out.println(miAgenda.getNombre("8796"));
+	System.out.println(miAgenda.getTelefono("Alejandro"));
+	System.out.println(miAgenda.getTelefono("Margarita"));
+	System.out.println(miAgenda.buscarNombre("l"));
+	System.out.println(miAgenda);
+	System.out.println(miAgenda.getAll());
+	System.out.println(miAgenda.hayCapicuas());
+	miAgenda.addTelefono("345272543", "Diego");
+    System.out.println(miAgenda.hayCapicuas());
+    System.out.println(miAgenda);
+    }
+
+}
